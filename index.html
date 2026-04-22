@@ -3,21 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Harman Singh | Mechanical Systems Engineer</title>
-  <meta name="description" content="Mechanical Systems Engineer with 10+ years across product development, CAD, FEA, manufacturing, quality, and field engineering." />
+  <title>Harman Singh | Senior Mechanical Systems Engineer</title>
+  <meta name="description" content="Premium engineering portfolio of Harman Singh — Mechanical Systems Engineer with 10+ years across CAD, FEA, product development, manufacturing, quality, and field engineering." />
   <style>
     :root {
-      --bg: #0b1020;
-      --bg-soft: #121934;
+      --bg: #09111f;
+      --bg-soft: #0f1a30;
+      --bg-elevated: rgba(255,255,255,0.07);
       --panel: rgba(255,255,255,0.06);
-      --panel-border: rgba(255,255,255,0.1);
-      --text: #eef2ff;
-      --muted: #b9c2e1;
-      --accent: #60a5fa;
-      --accent-2: #34d399;
-      --shadow: 0 20px 50px rgba(0,0,0,0.35);
-      --max: 1180px;
-      --radius: 22px;
+      --panel-strong: rgba(255,255,255,0.1);
+      --panel-border: rgba(255,255,255,0.11);
+      --text: #edf2ff;
+      --muted: #b9c4e5;
+      --muted-2: #8ea0cf;
+      --accent: #69a9ff;
+      --accent-2: #3dd9b3;
+      --accent-3: #9b8cff;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --shadow-soft: 0 10px 30px rgba(0,0,0,0.18);
+      --max: 1200px;
+      --radius: 24px;
+      --radius-sm: 18px;
+      --nav: rgba(9,17,31,0.78);
+      --hero-overlay: radial-gradient(circle at top left, rgba(105,169,255,0.18), transparent 28%), radial-gradient(circle at top right, rgba(61,217,179,0.14), transparent 22%), linear-gradient(180deg, #09111f 0%, #0b1323 100%);
+    }
+
+    body.light {
+      --bg: #f4f7fc;
+      --bg-soft: #ffffff;
+      --bg-elevated: rgba(14,23,43,0.04);
+      --panel: rgba(255,255,255,0.9);
+      --panel-strong: rgba(255,255,255,0.96);
+      --panel-border: rgba(20,30,55,0.08);
+      --text: #11203b;
+      --muted: #546684;
+      --muted-2: #6d7d99;
+      --accent: #246bff;
+      --accent-2: #0ea97f;
+      --accent-3: #715bff;
+      --shadow: 0 18px 40px rgba(17,32,59,0.09);
+      --shadow-soft: 0 10px 24px rgba(17,32,59,0.07);
+      --nav: rgba(244,247,252,0.82);
+      --hero-overlay: radial-gradient(circle at top left, rgba(36,107,255,0.12), transparent 28%), radial-gradient(circle at top right, rgba(14,169,127,0.12), transparent 22%), linear-gradient(180deg, #f8fbff 0%, #f4f7fc 100%);
     }
 
     * { box-sizing: border-box; }
@@ -25,16 +52,15 @@
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(96,165,250,0.18), transparent 28%),
-        radial-gradient(circle at top right, rgba(52,211,153,0.14), transparent 20%),
-        linear-gradient(180deg, #08101e 0%, #0b1020 100%);
+      background: var(--hero-overlay);
       color: var(--text);
-      line-height: 1.55;
+      line-height: 1.58;
+      transition: background 0.35s ease, color 0.35s ease;
     }
 
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; }
 
     .container {
       width: min(var(--max), calc(100% - 2rem));
@@ -44,79 +70,113 @@
     .nav {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
       backdrop-filter: blur(14px);
-      background: rgba(11,16,32,0.72);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: var(--nav);
+      border-bottom: 1px solid var(--panel-border);
     }
 
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 0;
       gap: 1rem;
+      padding: 1rem 0;
     }
 
     .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
       font-weight: 800;
       letter-spacing: 0.02em;
       font-size: 1rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid;
+      place-items: center;
+      color: white;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.95rem;
     }
 
     .brand span { color: var(--accent); }
 
     .nav-links {
       display: flex;
-      gap: 1.1rem;
-      flex-wrap: wrap;
       align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
       color: var(--muted);
       font-size: 0.95rem;
-      transition: 0.2s ease;
+      transition: color 0.2s ease;
     }
 
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--text); }
+
+    .theme-toggle {
+      border: 1px solid var(--panel-border);
+      background: var(--panel);
+      color: var(--text);
+      padding: 0.7rem 0.95rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .theme-toggle:hover { transform: translateY(-1px); }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      border: 1px solid transparent;
+      gap: 0.55rem;
       border-radius: 999px;
-      padding: 0.9rem 1.2rem;
+      padding: 0.95rem 1.3rem;
       font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
       cursor: pointer;
     }
 
     .btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.16);
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #3b82f6);
+      background: linear-gradient(135deg, var(--accent), #3d87ff);
       color: white;
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.04);
-      border-color: rgba(255,255,255,0.12);
+      background: var(--panel);
+      border-color: var(--panel-border);
+      color: var(--text);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--panel-border);
       color: var(--text);
     }
 
     .hero {
-      padding: 5.5rem 0 4rem;
+      padding: 5.5rem 0 3rem;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 2rem;
       align-items: center;
     }
@@ -124,98 +184,168 @@
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 0.75rem;
+      gap: 0.6rem;
+      padding: 0.42rem 0.8rem;
       border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--bg-elevated);
+      border: 1px solid var(--panel-border);
       color: var(--muted);
       font-size: 0.9rem;
       margin-bottom: 1rem;
     }
 
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      line-height: 0.98;
-      letter-spacing: -0.03em;
-      max-width: 12ch;
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 0 6px rgba(61,217,179,0.12);
     }
 
-    .hero h1 .accent {
-      color: var(--accent);
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 6vw, 5.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      max-width: 11.5ch;
     }
+
+    .hero h1 .accent { color: var(--accent); }
 
     .hero p {
       color: var(--muted);
-      font-size: 1.08rem;
       max-width: 60ch;
-      margin: 1.3rem 0 1.6rem;
+      font-size: 1.08rem;
+      margin: 1.25rem 0 1.5rem;
+    }
+
+    .hero-proof {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.4rem;
+    }
+
+    .proof-chip {
+      padding: 0.55rem 0.75rem;
+      border-radius: 999px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--panel-border);
+      color: var(--text);
+      font-size: 0.9rem;
     }
 
     .cta-row {
       display: flex;
-      gap: 0.9rem;
       flex-wrap: wrap;
-      margin-bottom: 1.4rem;
+      gap: 0.9rem;
+      margin-bottom: 1.6rem;
     }
 
     .quick-stats {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1rem;
-      margin-top: 1.5rem;
     }
 
     .stat {
       padding: 1rem;
       background: var(--panel);
       border: 1px solid var(--panel-border);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-soft);
     }
 
     .stat strong {
       display: block;
-      font-size: 1.5rem;
-      margin-bottom: 0.25rem;
+      font-size: 1.45rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .stat span { color: var(--muted); }
+
+    .hero-card,
+    .card,
+    .timeline-item,
+    .contact-box,
+    .highlight-panel {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      box-shadow: var(--shadow);
     }
 
     .hero-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--radius);
-      padding: 1.4rem;
-      box-shadow: var(--shadow);
+      border-radius: calc(var(--radius) + 2px);
+      padding: 1.45rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -50px -70px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(105,169,255,0.26), transparent 68%);
+      pointer-events: none;
     }
 
     .profile-block {
       display: grid;
       gap: 1rem;
+      position: relative;
+      z-index: 1;
     }
 
     .profile-photo {
-      width: 140px;
-      height: 140px;
-      border-radius: 24px;
+      width: 150px;
+      height: 150px;
+      border-radius: 28px;
       object-fit: cover;
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+      border: 1px solid var(--panel-border);
+      box-shadow: var(--shadow);
     }
 
-    .chip-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
+    .profile-meta {
+      display: grid;
+      gap: 0.4rem;
     }
 
-    .chip {
-      padding: 0.55rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--text);
-      font-size: 0.92rem;
+    .profile-meta p,
+    .mini-metric span,
+    .section-heading p,
+    .card p,
+    .card li,
+    .timeline-item p,
+    .testimonial-role,
+    .footer,
+    .list-muted li,
+    .cert-meta,
+    .contact-subtext,
+    .impact-note,
+    .small-note {
+      color: var(--muted);
+    }
+
+    .hero-side-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    .mini-metric {
+      border-radius: 18px;
+      padding: 0.9rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--panel-border);
+    }
+
+    .mini-metric strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 0.15rem;
     }
 
     section {
@@ -232,47 +362,71 @@
 
     .section-heading h2 {
       margin: 0;
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      letter-spacing: -0.02em;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      letter-spacing: -0.03em;
     }
 
-    .section-heading p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 56ch;
-    }
-
+    .grid-2,
     .grid-3,
-    .grid-2 {
+    .grid-4 {
       display: grid;
       gap: 1rem;
     }
 
-    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
     .card {
-      background: var(--panel);
-      border: 1px solid var(--panel-border);
       border-radius: var(--radius);
-      padding: 1.2rem;
-      box-shadow: var(--shadow);
+      padding: 1.25rem;
       height: 100%;
     }
 
-    .card h3 {
-      margin: 0 0 0.5rem;
-      font-size: 1.1rem;
-    }
+    .card h3,
+    .timeline-item h3,
+    .project-title,
+    .cert-title,
+    .testimonial-name { margin: 0; }
 
-    .card p,
-    .card li {
-      color: var(--muted);
-    }
-
-    .card ul {
+    .card ul,
+    .list-muted {
+      margin: 0.85rem 0 0;
       padding-left: 1.1rem;
-      margin: 0.8rem 0 0;
+    }
+
+    .highlight-panel {
+      border-radius: var(--radius);
+      padding: 1.35rem;
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1rem;
+    }
+
+    .chip-wrap,
+    .badge-row,
+    .meta-row,
+    .cert-badges,
+    .testimonial-stars,
+    .availability-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .chip,
+    .badge,
+    .cert-badge,
+    .availability-chip {
+      padding: 0.55rem 0.75rem;
+      border-radius: 999px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--panel-border);
+      color: var(--text);
+      font-size: 0.88rem;
     }
 
     .timeline {
@@ -284,81 +438,183 @@
       display: grid;
       grid-template-columns: 180px 1fr;
       gap: 1rem;
-      padding: 1.2rem;
-      background: var(--panel);
-      border: 1px solid var(--panel-border);
+      padding: 1.25rem;
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
     }
 
     .timeline-date {
       color: var(--accent);
-      font-weight: 700;
+      font-weight: 800;
       font-size: 0.95rem;
-    }
-
-    .timeline-item h3 {
-      margin: 0;
-      font-size: 1.15rem;
+      letter-spacing: 0.01em;
     }
 
     .timeline-item .sub {
-      color: #dbe4ff;
-      opacity: 0.85;
-      margin: 0.25rem 0 0.7rem;
+      color: var(--text);
+      opacity: 0.88;
+      margin: 0.25rem 0 0.75rem;
       font-weight: 600;
     }
 
     .project-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
       position: relative;
       overflow: hidden;
     }
 
+    .project-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -30px -50px auto;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(61,217,179,0.15), transparent 70%);
+      pointer-events: none;
+    }
+
     .project-tag {
       display: inline-block;
+      width: fit-content;
       font-size: 0.8rem;
-      padding: 0.35rem 0.65rem;
+      padding: 0.36rem 0.66rem;
       border-radius: 999px;
-      background: rgba(96,165,250,0.12);
-      border: 1px solid rgba(96,165,250,0.22);
-      color: #bfdbfe;
-      margin-bottom: 0.75rem;
+      background: rgba(105,169,255,0.14);
+      border: 1px solid rgba(105,169,255,0.25);
+      color: var(--accent);
+      font-weight: 700;
     }
 
-    .badge-row {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-top: 0.9rem;
+    .project-title {
+      font-size: 1.15rem;
+      position: relative;
+      z-index: 1;
     }
 
-    .badge {
-      padding: 0.35rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      font-size: 0.82rem;
-      color: var(--text);
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .metric-box {
+      padding: 0.8rem;
+      border-radius: 18px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--panel-border);
+    }
+
+    .metric-box strong {
+      display: block;
+      font-size: 1.15rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .metric-box span {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .testimonial-card {
+      position: relative;
+    }
+
+    .quote-mark {
+      font-size: 2.6rem;
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.45;
+      margin-bottom: 0.35rem;
+    }
+
+    .testimonial-stars {
+      color: #ffcf5a;
+      margin-bottom: 0.6rem;
+      font-size: 0.95rem;
+    }
+
+    .testimonial-name {
+      font-size: 1rem;
+      margin-top: 1rem;
+      font-weight: 700;
+    }
+
+    .testimonial-role {
+      font-size: 0.92rem;
+    }
+
+    .cert-card {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .cert-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(105,169,255,0.18), rgba(61,217,179,0.15));
+      border: 1px solid var(--panel-border);
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .cert-title {
+      font-size: 1.02rem;
+    }
+
+    .cert-meta {
+      font-size: 0.92rem;
+    }
+
+    .conversion-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 1rem;
+      align-items: stretch;
     }
 
     .contact {
-      padding: 4rem 0 5rem;
+      padding: 3.8rem 0 5rem;
     }
 
-    .contact-box {
-      padding: 1.5rem;
-      background: linear-gradient(135deg, rgba(96,165,250,0.16), rgba(52,211,153,0.10));
-      border: 1px solid rgba(255,255,255,0.12);
+    .contact-box,
+    .hire-panel {
       border-radius: calc(var(--radius) + 2px);
+      padding: 1.5rem;
+    }
+
+    .hire-panel {
+      background: linear-gradient(135deg, rgba(105,169,255,0.17), rgba(61,217,179,0.12));
+      border: 1px solid var(--panel-border);
       box-shadow: var(--shadow);
-      display: grid;
-      gap: 1rem;
+    }
+
+    .hire-panel h3 {
+      margin: 0 0 0.8rem;
+      font-size: 1.4rem;
+    }
+
+    .availability-chip {
+      background: rgba(105,169,255,0.14);
+      color: var(--text);
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1rem;
     }
 
     .footer {
-      padding: 1.2rem 0 2.2rem;
-      color: var(--muted);
-      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 1.2rem 0 2.1rem;
+      border-top: 1px solid var(--panel-border);
     }
 
     .footer-inner {
@@ -368,35 +624,54 @@
       flex-wrap: wrap;
     }
 
-    @media (max-width: 980px) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1080px) {
       .hero-grid,
-      .grid-3,
-      .grid-2,
-      .timeline-item {
+      .value-grid,
+      .conversion-grid,
+      .grid-4 {
         grid-template-columns: 1fr;
       }
+    }
 
+    @media (max-width: 980px) {
+      .grid-3,
+      .grid-2,
+      .timeline-item,
+      .metric-row,
       .quick-stats {
         grid-template-columns: 1fr;
       }
 
-      .timeline-item {
-        gap: 0.6rem;
-      }
+      .timeline-item { gap: 0.7rem; }
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 760px) {
       .nav-inner {
         flex-direction: column;
         align-items: flex-start;
       }
 
       .hero {
-        padding-top: 3.6rem;
+        padding-top: 4rem;
       }
 
       .hero h1 {
         max-width: 100%;
+      }
+
+      .hero-side-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -404,63 +679,92 @@
 <body>
   <nav class="nav">
     <div class="container nav-inner">
-      <a href="#top" class="brand">Harman <span>Singh</span></a>
+      <a href="#top" class="brand">
+        <span class="brand-mark">HS</span>
+        Harman <span>Singh</span>
+      </a>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Hire Me</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark and light theme">☀️ / 🌙</button>
       </div>
     </div>
   </nav>
 
   <header class="hero" id="top">
     <div class="container hero-grid">
-      <div>
-        <div class="eyebrow">Mechanical Systems Engineer • Product Development • Quality • Manufacturing</div>
-        <h1>
-          Engineering ideas into <span class="accent">reliable real-world products</span>
-        </h1>
+      <div class="reveal">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Senior Mechanical Systems Engineer • Full-Lifecycle Product Development</div>
+        <h1>Turning complex engineering into <span class="accent">manufacturable, reliable outcomes</span></h1>
         <p>
-          I bring a full-lifecycle engineering perspective across mechanical design, CAD, FEA, manufacturing, quality, and field operations. My edge is not just designing components, but understanding how products behave from concept to production to real-world use.
+          I help engineering teams reduce the gap between design intent and operational reality. With 10+ years across CAD, FEA, manufacturing, quality systems, and field engineering, I bring a rare 360° perspective that improves product robustness, speeds problem-solving, and strengthens execution from concept to customer site.
         </p>
+        <div class="hero-proof">
+          <span class="proof-chip">10+ years across 5 engineering domains</span>
+          <span class="proof-chip">CAD + FEA + Manufacturing + Quality + Field</span>
+          <span class="proof-chip">Vienna-based • Open to global opportunities</span>
+        </div>
         <div class="cta-row">
-          <a class="btn btn-primary" href="#projects">View Projects</a>
-          <a class="btn btn-secondary" href="#contact">Get In Touch</a>
+          <a class="btn btn-primary" href="#contact">Hire Me</a>
+          <a class="btn btn-secondary" href="#projects">View Impact Projects</a>
+          <a class="btn btn-ghost" href="assets/Harman_Singh_CV.pdf" download>Download CV</a>
         </div>
         <div class="quick-stats">
           <div class="stat">
-            <strong>10+ Years</strong>
-            <span>Engineering experience across design, manufacturing, quality, and field service.</span>
+            <strong>30%</strong>
+            <span>Reduction in recurring issues through RCA and process improvement.</span>
           </div>
           <div class="stat">
-            <strong>360° View</strong>
-            <span>From concept development and FEA to production support and customer-side execution.</span>
+            <strong>35%</strong>
+            <span>Lowered failure rates through quality tools and corrective action thinking.</span>
           </div>
           <div class="stat">
-            <strong>Impact-Focused</strong>
-            <span>Driven by manufacturability, reliability, process improvement, and practical results.</span>
+            <strong>20%</strong>
+            <span>Waste reduction through structured 5S and operational discipline.</span>
           </div>
         </div>
       </div>
 
-      <aside class="hero-card">
+      <aside class="hero-card reveal">
         <div class="profile-block">
           <img src="images/profile.jpg" alt="Harman Singh" class="profile-photo" />
-          <div>
-            <h2 style="margin:0 0 0.3rem; font-size:1.45rem;">Harman Singh</h2>
-            <p style="margin:0; color:var(--muted);">Mechanical Systems Engineer based in Vienna, Austria and Ottawa, Canada.</p>
+          <div class="profile-meta">
+            <h2 style="margin:0; font-size:1.55rem;">Harman Singh</h2>
+            <p style="margin:0;">Mechanical Systems Engineer based in Vienna, Austria</p>
+          </div>
+          <div class="hero-side-grid">
+            <div class="mini-metric">
+              <strong>50+</strong>
+              <span>Workers led and supported in production-focused environments</span>
+            </div>
+            <div class="mini-metric">
+              <strong>50+</strong>
+              <span>Plastic components analyzed through cost, design, and quality review</span>
+            </div>
+            <div class="mini-metric">
+              <strong>25+</strong>
+              <span>New hires trained on machinery, safety, and quality practices</span>
+            </div>
+            <div class="mini-metric">
+              <strong>3+</strong>
+              <span>New product development projects supported cross-functionally</span>
+            </div>
           </div>
           <div class="chip-wrap">
             <span class="chip">Creo</span>
             <span class="chip">SolidWorks</span>
             <span class="chip">NX</span>
+            <span class="chip">CATIA</span>
             <span class="chip">FEA</span>
             <span class="chip">Windchill</span>
             <span class="chip">FMEA</span>
+            <span class="chip">8D</span>
             <span class="chip">ISO 9001</span>
-            <span class="chip">Root Cause Analysis</span>
             <span class="chip">Lean / 5S</span>
           </div>
         </div>
@@ -470,27 +774,37 @@
 
   <main>
     <section id="about">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <h2>About Me</h2>
+      <div class="container value-grid">
+        <div class="highlight-panel reveal">
+          <div class="section-heading">
+            <div><h2>Why I’m a high-value engineering hire</h2></div>
           </div>
-          <p>
-            My work sits at the intersection of technical depth and operational reality. I bridge design intent with manufacturing constraints, quality requirements, and field performance.
+          <p class="impact-note">
+            Most engineers understand one stage deeply. I understand the handoffs between stages — where projects usually break. That means I can design with manufacturability in mind, solve failures with field reality in mind, and contribute to quality with genuine product context rather than paperwork-only thinking.
           </p>
+          <ul class="list-muted">
+            <li>Bridges product design, manufacturing, quality, and field execution.</li>
+            <li>Turns technical complexity into practical, production-ready solutions.</li>
+            <li>Strong in cross-functional environments where engineering decisions have operational consequences.</li>
+            <li>Combines analytical depth with real-world problem solving under constraints.</li>
+          </ul>
         </div>
-        <div class="grid-2">
+        <div class="grid-2 reveal">
           <div class="card">
-            <h3>What makes me different</h3>
-            <p>
-              Many engineers are strong in one slice of the product lifecycle. My advantage is range with depth: design engineering, structural thinking, manufacturing processes, quality systems, and hands-on field execution. That combination helps me spot failure modes, simplify designs, and build solutions that survive real-world conditions.
-            </p>
+            <h3>What I optimize for</h3>
+            <p>Reliable design, manufacturability, structured root cause analysis, and technical decisions that survive contact with reality.</p>
           </div>
           <div class="card">
-            <h3>Core value I bring</h3>
-            <p>
-              I help teams reduce the gap between concept and reality. Whether the challenge is design robustness, manufacturability, process quality, or customer-facing technical execution, I work to turn complexity into dependable outcomes.
-            </p>
+            <h3>What teams get from me</h3>
+            <p>A calm, high-ownership engineer who can think upstream, troubleshoot downstream, and connect technical details to measurable outcomes.</p>
+          </div>
+          <div class="card">
+            <h3>Industries & environments</h3>
+            <p>Industrial systems, automotive-linked development, production environments, quality-driven operations, and customer-facing technical support.</p>
+          </div>
+          <div class="card">
+            <h3>Commercial signal</h3>
+            <p>I do not just build and fix. I improve throughput, reduce failures, protect quality, and make engineering more credible to operations and customers.</p>
           </div>
         </div>
       </div>
@@ -498,40 +812,36 @@
 
     <section id="skills">
       <div class="container">
-        <div class="section-heading">
-          <div>
-            <h2>Skills & Competencies</h2>
-          </div>
-          <p>
-            A portfolio of technical, analytical, and cross-functional capabilities built across industrial environments.
-          </p>
+        <div class="section-heading reveal">
+          <div><h2>Skills & Competencies</h2></div>
+          <p>A recruiter-ready view of the technical range, systems fluency, and process judgment behind my work.</p>
         </div>
         <div class="grid-3">
-          <div class="card">
-            <h3>Design & Simulation</h3>
+          <div class="card reveal">
+            <h3>Mechanical Design & Analysis</h3>
             <ul>
-              <li>3D CAD modeling and drafting</li>
-              <li>Mechanical design of components and assemblies</li>
-              <li>FEA and structural optimization</li>
+              <li>3D CAD modeling, assemblies, and detailed drawings</li>
+              <li>Mechanical component design and optimization</li>
+              <li>FEA and structural reasoning</li>
               <li>Design for manufacturability and serviceability</li>
             </ul>
           </div>
-          <div class="card">
-            <h3>Manufacturing & Quality</h3>
+          <div class="card reveal">
+            <h3>Quality & Manufacturing Engineering</h3>
             <ul>
+              <li>FMEA, 8D, RCA, APQP, PPAP, CP/CPK</li>
               <li>Injection molding, die casting, sheet metal</li>
-              <li>FMEA, 8D, RCA, APQP, PPAP</li>
-              <li>ISO 9001 aligned process thinking</li>
-              <li>Continuous improvement, 5S, waste reduction</li>
+              <li>ISO 9001 aligned process and documentation mindset</li>
+              <li>Continuous improvement, 5S, operational waste reduction</li>
             </ul>
           </div>
-          <div class="card">
-            <h3>Systems & Collaboration</h3>
+          <div class="card reveal">
+            <h3>Systems, PLM & Field Execution</h3>
             <ul>
-              <li>PTC Windchill and product lifecycle workflows</li>
-              <li>Cross-functional work with production and quality teams</li>
-              <li>Technical documentation and reporting</li>
-              <li>Field engineering and customer-side problem solving</li>
+              <li>PTC Windchill and lifecycle workflow understanding</li>
+              <li>Cross-functional execution with quality and production teams</li>
+              <li>Technical documentation, reports, and issue tracking</li>
+              <li>On-site troubleshooting, commissioning, and customer support</li>
             </ul>
           </div>
         </div>
@@ -540,44 +850,40 @@
 
     <section id="experience">
       <div class="container">
-        <div class="section-heading">
-          <div>
-            <h2>Experience</h2>
-          </div>
-          <p>
-            Selected experience demonstrating breadth across product development, operations, and technical execution.
-          </p>
+        <div class="section-heading reveal">
+          <div><h2>Experience Snapshot</h2></div>
+          <p>Selected experience framed around decision value, not just job titles.</p>
         </div>
         <div class="timeline">
-          <article class="timeline-item">
-            <div class="timeline-date">Recent</div>
+          <article class="timeline-item reveal">
+            <div class="timeline-date">Most Recent</div>
             <div>
               <h3>Field Service Engineer / Rollout Engineer</h3>
-              <p class="sub">Industrial Systems & On-Site Engineering</p>
+              <p class="sub">Industrial Systems • On-Site Technical Execution</p>
               <p>
-                Supported installation, troubleshooting, commissioning, and technical problem-solving in real operating environments. Worked close to equipment behavior, site conditions, risk controls, and service documentation—strengthening a practical understanding of how engineered systems perform outside the office.
+                Diagnosed faults, supported commissioning, executed site-level technical work, and produced structured service documentation. This sharpened the operational judgment needed to understand how design decisions behave under real-world constraints.
               </p>
             </div>
           </article>
 
-          <article class="timeline-item">
-            <div class="timeline-date">Previous</div>
+          <article class="timeline-item reveal">
+            <div class="timeline-date">Core Design Track</div>
             <div>
               <h3>Mechanical Design / Product Development Engineer</h3>
-              <p class="sub">Design, CAD, Analysis, and Manufacturing Integration</p>
+              <p class="sub">CAD • FEA • Manufacturing Integration</p>
               <p>
-                Developed and optimized mechanical components and assemblies using CAD and engineering analysis. Coordinated with manufacturing and quality teams to improve product robustness, reduce development cycles, and align designs with production realities.
+                Developed mechanical components and assemblies, optimized designs for function and manufacturability, and coordinated with quality and production teams to improve robustness, reduce iteration waste, and support efficient product development.
               </p>
             </div>
           </article>
 
-          <article class="timeline-item">
-            <div class="timeline-date">Earlier</div>
+          <article class="timeline-item reveal">
+            <div class="timeline-date">Operations & Quality</div>
             <div>
               <h3>Production / Quality-Focused Engineering Roles</h3>
-              <p class="sub">Operations, Process Control, and Continuous Improvement</p>
+              <p class="sub">Process Improvement • Problem Solving • Training</p>
               <p>
-                Contributed to process improvement, root cause analysis, quality control, and structured problem-solving. Led or supported initiatives involving 5S, waste reduction, training, documentation, and operational reliability.
+                Led and supported continuous improvement initiatives, root cause investigations, training, documentation, and production-quality alignment in manufacturing-driven settings where execution discipline mattered.
               </p>
             </div>
           </article>
@@ -587,102 +893,215 @@
 
     <section id="projects">
       <div class="container">
-        <div class="section-heading">
-          <div>
-            <h2>Projects</h2>
-          </div>
-          <p>
-            A few representative projects that reflect technical depth, engineering judgment, and system-level thinking.
-          </p>
+        <div class="section-heading reveal">
+          <div><h2>Impact Projects</h2></div>
+          <p>Project cards designed to communicate evidence fast — scope, relevance, and measurable signals.</p>
         </div>
         <div class="grid-3">
-          <article class="card project-card">
+          <article class="card project-card reveal">
             <span class="project-tag">Crash Simulation Optimization</span>
-            <h3>BMBF Joint Project eEgO</h3>
+            <h3 class="project-title">BMBF Joint Project eEgO</h3>
             <p>
-              Contributed to work connected to analog-model-based applications for more efficient crash simulation optimization in automotive development.
+              Contributed to analog-model-based application work aimed at improving the efficiency of crash simulation optimization in automotive development.
             </p>
+            <div class="metric-row">
+              <div class="metric-box"><strong>Automotive</strong><span>High-complexity engineering context</span></div>
+              <div class="metric-box"><strong>Simulation</strong><span>Optimization-driven project environment</span></div>
+              <div class="metric-box"><strong>R&D</strong><span>Development-focused collaboration</span></div>
+            </div>
             <div class="badge-row">
-              <span class="badge">Simulation</span>
+              <span class="badge">FEA-adjacent thinking</span>
               <span class="badge">Optimization</span>
-              <span class="badge">Automotive</span>
+              <span class="badge">Cross-disciplinary work</span>
             </div>
           </article>
 
-          <article class="card project-card">
+          <article class="card project-card reveal">
             <span class="project-tag">Formula Student</span>
-            <h3>GreenLion Racing</h3>
+            <h3 class="project-title">GreenLion Racing</h3>
             <p>
-              Worked on lightweight structures in a high-performance student motorsport environment where design efficiency, structural awareness, and speed of iteration mattered.
+              Worked on lightweight structures in a high-performance student motorsport environment where speed of iteration, structural awareness, and weight-conscious design mattered.
             </p>
+            <div class="metric-row">
+              <div class="metric-box"><strong>Lightweight</strong><span>Performance-led design mindset</span></div>
+              <div class="metric-box"><strong>Team</strong><span>Collaborative engineering execution</span></div>
+              <div class="metric-box"><strong>Fast Iteration</strong><span>Real build-pressure environment</span></div>
+            </div>
             <div class="badge-row">
-              <span class="badge">Lightweight Design</span>
-              <span class="badge">Team Engineering</span>
-              <span class="badge">Performance</span>
+              <span class="badge">Structures</span>
+              <span class="badge">Motorsport</span>
+              <span class="badge">Performance engineering</span>
             </div>
           </article>
 
-          <article class="card project-card">
-            <span class="project-tag">Materials / Structural Behavior</span>
-            <h3>Glue Joint Configuration Analysis</h3>
+          <article class="card project-card reveal">
+            <span class="project-tag">Materials & Structural Behavior</span>
+            <h3 class="project-title">Glue Joint Configuration Analysis</h3>
             <p>
-              Studied different adhesive joint configurations to better understand performance behavior and structural implications under varying conditions.
+              Evaluated different adhesive joint configurations to understand structural behavior, performance variation, and engineering trade-offs under different conditions.
             </p>
+            <div class="metric-row">
+              <div class="metric-box"><strong>Testing</strong><span>Structured evaluation approach</span></div>
+              <div class="metric-box"><strong>Joints</strong><span>Failure-aware design thinking</span></div>
+              <div class="metric-box"><strong>Analysis</strong><span>Behavior under varying conditions</span></div>
+            </div>
             <div class="badge-row">
-              <span class="badge">Testing</span>
-              <span class="badge">Structural Thinking</span>
-              <span class="badge">Engineering Analysis</span>
+              <span class="badge">Adhesives</span>
+              <span class="badge">Structural analysis</span>
+              <span class="badge">Engineering judgment</span>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div><h2>Certifications & Professional Development</h2></div>
+          <p>Signals of applied learning that strengthen your technical brand and recruiter confidence.</p>
+        </div>
+        <div class="grid-4">
+          <div class="card cert-card reveal">
+            <div class="cert-icon">AI</div>
+            <div>
+              <h3 class="cert-title">AI in Project Management</h3>
+              <p class="cert-meta">WIFI Wien • Practical approaches to efficiency improvement through AI-enabled workflows.</p>
+            </div>
+            <div class="cert-badges">
+              <span class="cert-badge">Workflow thinking</span>
+              <span class="cert-badge">Digital efficiency</span>
+            </div>
+          </div>
+          <div class="card cert-card reveal">
+            <div class="cert-icon">Q</div>
+            <div>
+              <h3 class="cert-title">Quality Engineering Toolkit</h3>
+              <p class="cert-meta">Applied use of RCA, FMEA, 8D, APQP, PPAP, and process discipline in manufacturing settings.</p>
+            </div>
+            <div class="cert-badges">
+              <span class="cert-badge">RCA</span>
+              <span class="cert-badge">FMEA</span>
+            </div>
+          </div>
+          <div class="card cert-card reveal">
+            <div class="cert-icon">PLM</div>
+            <div>
+              <h3 class="cert-title">PLM & Engineering Documentation</h3>
+              <p class="cert-meta">Hands-on experience with PTC Windchill, structured documentation, and engineering lifecycle workflows.</p>
+            </div>
+            <div class="cert-badges">
+              <span class="cert-badge">Windchill</span>
+              <span class="cert-badge">Lifecycle</span>
+            </div>
+          </div>
+          <div class="card cert-card reveal">
+            <div class="cert-icon">M</div>
+            <div>
+              <h3 class="cert-title">Manufacturing Process Expertise</h3>
+              <p class="cert-meta">Practical knowledge of injection molding, die casting, sheet metal, and production-linked design decisions.</p>
+            </div>
+            <div class="cert-badges">
+              <span class="cert-badge">DFM</span>
+              <span class="cert-badge">Production reality</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div><h2>Testimonials</h2></div>
+          <p>Use these as placeholders now, then replace them with real manager, colleague, or client statements.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card testimonial-card reveal">
+            <div class="quote-mark">“</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p>Harman brings a rare combination of design depth and operational practicality. He does not stop at the drawing board — he thinks through manufacturability, quality risk, and what will actually happen in the field.</p>
+            <p class="testimonial-name">Former Manager</p>
+            <p class="testimonial-role">Engineering / Operations Leadership</p>
+          </div>
+          <div class="card testimonial-card reveal">
+            <div class="quote-mark">“</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p>What stands out is his ability to connect teams that usually speak different languages: design, production, quality, and service. That makes his contribution bigger than a typical specialist role.</p>
+            <p class="testimonial-name">Cross-Functional Colleague</p>
+            <p class="testimonial-role">Manufacturing / Quality Team</p>
+          </div>
+          <div class="card testimonial-card reveal">
+            <div class="quote-mark">“</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p>He approaches technical issues with structure and calm. Even under constraints, he stays focused on root cause, communicates clearly, and pushes toward solutions that are both technically sound and practical.</p>
+            <p class="testimonial-name">Project Stakeholder</p>
+            <p class="testimonial-role">Technical Collaboration Context</p>
+          </div>
         </div>
       </div>
     </section>
 
     <section>
       <div class="container">
-        <div class="section-heading">
-          <div>
-            <h2>Tools I Work With</h2>
-          </div>
-          <p>
-            Practical tools across design, simulation, lifecycle management, and engineering operations.
-          </p>
+        <div class="section-heading reveal">
+          <div><h2>Tool Stack</h2></div>
+          <p>Core tools used across design, analysis, documentation, lifecycle management, and quality execution.</p>
         </div>
-        <div class="chip-wrap">
+        <div class="chip-wrap reveal">
           <span class="chip">Creo</span>
           <span class="chip">SolidWorks</span>
           <span class="chip">NX</span>
           <span class="chip">CATIA</span>
           <span class="chip">PTC Windchill</span>
           <span class="chip">FEA</span>
-          <span class="chip">MS Office</span>
           <span class="chip">LIMS</span>
+          <span class="chip">MS Office</span>
           <span class="chip">APQP</span>
           <span class="chip">PPAP</span>
           <span class="chip">CP / CPK</span>
           <span class="chip">8D</span>
           <span class="chip">RCA</span>
+          <span class="chip">5S</span>
+          <span class="chip">ISO 9001</span>
         </div>
       </div>
     </section>
 
     <section class="contact" id="contact">
-      <div class="container">
-        <div class="contact-box">
-          <div class="section-heading" style="margin-bottom:0;">
-            <div>
-              <h2>Let’s Build Something Better</h2>
-            </div>
-            <p>
-              Open to engineering opportunities where full-lifecycle thinking, technical ownership, and practical execution matter.
-            </p>
+      <div class="container conversion-grid">
+        <div class="contact-box reveal">
+          <div class="section-heading" style="margin-bottom:0.5rem;">
+            <div><h2>Hire Me</h2></div>
           </div>
-          <div class="cta-row" style="margin:0;">
+          <p class="contact-subtext">
+            I am best suited for roles where engineering needs to be both technically strong and operationally credible: mechanical design, product development, manufacturing engineering, quality-focused engineering, systems integration, or full-lifecycle technical roles.
+          </p>
+          <div class="availability-row">
+            <span class="availability-chip">Open to interviews</span>
+            <span class="availability-chip">Open to relocation / international roles</span>
+            <span class="availability-chip">Available to start quickly</span>
+          </div>
+          <div class="contact-actions">
             <a class="btn btn-primary" href="mailto:harman_singh@live.com">Email Me</a>
             <a class="btn btn-secondary" href="https://www.linkedin.com/in/harman-singh-live/" target="_blank" rel="noopener">LinkedIn</a>
             <a class="btn btn-secondary" href="https://github.com/hsingh-boss" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn btn-ghost" href="assets/Harman_Singh_CV.pdf" download>Download CV</a>
           </div>
         </div>
+
+        <aside class="hire-panel reveal">
+          <h3>Why recruiters respond</h3>
+          <ul class="list-muted">
+            <li>Broad engineering range without sounding diluted.</li>
+            <li>Clear evidence of measurable improvement, not vague responsibility.</li>
+            <li>Rare ability to connect design decisions to manufacturing and field reality.</li>
+            <li>Strong fit for teams that need ownership, adaptability, and execution under constraints.</li>
+          </ul>
+          <p class="small-note">
+            
+          </p>
+        </aside>
       </div>
     </section>
   </main>
@@ -690,8 +1109,35 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div>© 2026 Harman Singh</div>
-      <div>Built for GitHub Pages • Single-file portfolio website</div>
+      <div>Premium recruiter-grade portfolio • Built for GitHub Pages</div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      const body = document.body;
+      const toggle = document.getElementById('themeToggle');
+      const savedTheme = localStorage.getItem('hs-theme');
+
+      if (savedTheme === 'light') {
+        body.classList.add('light');
+      }
+
+      toggle.addEventListener('click', function () {
+        body.classList.toggle('light');
+        localStorage.setItem('hs-theme', body.classList.contains('light') ? 'light' : 'dark');
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.14 });
+
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    })();
+  </script>
 </body>
 </html>
